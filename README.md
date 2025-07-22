@@ -1,88 +1,73 @@
-Pro Wrestling Events Analytics 📊
+Pro Wrestling Events Analytics 📊  
+[](https://github.com/bryansauka/pro_wrestling_analytics#pro-wrestling-events-analytics-dbt-project)  
 
 This dbt project models professional wrestling event data from WWE and AEW spanning 2021-2025. It follows a classic star schema design for clean, scalable analytics-ready data with clear separation of staging, dimension, fact, and reporting layers.
 
-📦 Project Overview
+📦 Project Overview  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-project-overview)  
 
 Supports reporting, dashboards, and analysis for pro wrestling events including attendance, matches, locations, and dates. Designed for flexibility and ease of integration with BI tools.
 
-🔧 Data Sources
+🔧 Data Sources  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-data-sources)  
 
 Built primarily from raw events and match data ingested into staging models.
 
-🧱 Model Layers
+🧱 Model Layers  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-model-layers)  
 
 Organized following dbt best practices into:
 
-Staging (models/stage/): Prepares raw source data for downstream models.
+- **Staging (models/stage/):** Prepares raw source data for downstream models.  
+  - `stage_pro_wrestling_events.sql`: Raw wrestling events data.  
+  - `stage_pro_wrestling_matches.sql`: Raw match data.
 
-stage_pro_wrestling_events.sql: Raw wrestling events data.
+- **Dimension (models/dimensions/):** Business entities and attributes.  
+  - `dim_event.sql`: Event details such as brand, event name, show number.  
+  - `dim_arena.sql`: Unique arenas.  
+  - `dim_location.sql`: Locations (city, state, country).  
+  - `dim_date.sql`: Calendar date dimension.  
+  - `dim_match.sql`: Match details including winner, stipulations, title changes.
 
-stage_pro_wrestling_matches.sql: Raw match data.
+- **Fact (models/facts/):** Event and match level business measures linked to dimensions.  
+  - `fact_pro_wrestling_events.sql`: Attendance and event metrics.  
+  - `fact_pro_wrestling_matches.sql`: Match-level metrics like duration.
 
-Dimension (models/dimensions/): Business entities and attributes.
+- **Reporting (models/reporting/):** Denormalized tables for BI and dashboards.  
+  - `report_pro_wrestling_events.sql`: Joins facts and dimensions for analysis-ready views.
 
-dim_event.sql: Event details such as brand, event name, show number.
+🧪 Data Testing  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-data-testing)  
 
-dim_arena.sql: Unique arenas.
+Uses dbt tests to enforce:  
+- Uniqueness and non-null constraints on keys  
+- Referential integrity between fact and dimension tables  
 
-dim_location.sql: Locations (city, state, country).
+📄 Documentation  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-documentation)  
 
-dim_date.sql: Calendar date dimension.
+Models and columns are documented in `schema.yml`. Documentation is generated and viewable with dbt docs.
 
-dim_match.sql: Match details including winner, stipulations, title changes.
+🚀 Usage  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-usage)  
 
-Fact (models/facts/): Event and match level business measures linked to dimensions.
 
-fact_pro_wrestling_events.sql: Attendance and event metrics.
+🛠️ Customization  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-customization)  
 
-fact_pro_wrestling_matches.sql: Match-level metrics like duration.
+- Add new dimensions or facts by placing models in the appropriate folders.  
+- Update documentation and tests in `schema.yml`.  
+- Extend reporting models with additional joins or calculated fields as needed.
 
-Reporting (models/reporting/): Denormalized tables for BI and dashboards.
+📋 Best Practices  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-best-practices)  
 
-report_pro_wrestling_events.sql: Joins facts and dimensions for analysis-ready views.
+- Keep dimension tables unique on business keys.  
+- Validate fact table grain to avoid duplicates.  
+- Document models thoroughly with tests for data quality.
 
-🧪 Data Testing
-
-Uses dbt tests to enforce:
-
-Uniqueness and non-null constraints on keys
-
-Referential integrity between fact and dimension tables
-
-📄 Documentation
-
-Models and columns are documented in schema.yml. Documentation is generated and viewable with dbt docs.
-
-🚀 Usage
-
-Typical workflow:
-
-bash
-pip install dbt
-dbt deps
-# configure profiles.yml with your warehouse credentials
-dbt run
-dbt test
-dbt docs generate
-dbt docs serve
-🛠️ Customization
-
-Add new dimensions or facts by placing models in the appropriate folders.
-
-Update documentation and tests in schema.yml.
-
-Extend reporting models with additional joins or calculated fields as needed.
-
-📋 Best Practices
-
-Keep dimension tables unique on business keys.
-
-Validate fact table grain to avoid duplicates.
-
-Document models thoroughly with tests for data quality.
-
-🤝 Support & Contributions
+🤝 Support & Contributions  
+[](https://github.com/bryansauka/pro_wrestling_analytics#-support--contributions)  
 
 For questions or contributions, contact Grapple Insights or open an issue in this repository.
 
