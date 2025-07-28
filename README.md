@@ -1,4 +1,4 @@
-Pro Wrestling Events Analytics 📊  
+Cagematch Analytics 📊  
 [](https://github.com/bryansauka/pro_wrestling_analytics#pro-wrestling-events-analytics-dbt-project)  
 
 This dbt project models professional wrestling event data from WWE and AEW spanning 2021-2025. It follows a classic star schema design for clean, scalable analytics-ready data with clear separation of staging, dimension, fact, and reporting layers.
